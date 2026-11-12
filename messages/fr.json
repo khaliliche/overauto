@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Sile Chemicals — Produits chimiques et matériel de lavage auto",
+    "description": "Concentrés, produits individuels, machines et pièces de rechange pour le lavage automobile. Demandez votre devis en quelques clics."
+  },
+  "nav": {
+    "home": "Accueil",
+    "catalogue": "Catalogue",
+    "about": "À propos",
+    "contact": "Contact",
+    "quote": "Panier",
+    "menu": "Menu"
+  },
+  "common": {
+    "wholesale": "Gros",
+    "pieceByPiece": "À la pièce",
+    "requestQuote": "Demander un devis"
+  },
+  "home": {
+    "title": "Bienvenue chez Sile Chemicals !",
+    "subtitle": "Nous sommes ravis de vous accueillir et de vous présenter nos produits et notre activité.",
+    "company": "Sile Chemicals propose une gamme de produits chimiques concentrés et de matériel de nettoyage automobile, 100 % Made in Italy, de très bonne qualité et à des prix très adaptés. Appelez-nous pour profiter vite de nos différentes gammes.",
+    "ctaCatalogue": "Voir le catalogue",
+    "ctaQuote": "Demander un devis",
+    "modesTitle": "En gros ou à la pièce, comme vous voulez",
+    "wholesaleTitle": "Achat en gros",
+    "wholesaleText": "Des quantités adaptées aux professionnels : stations de lavage, garages, détaillants et revendeurs.",
+    "pieceTitle": "À la pièce",
+    "pieceText": "Besoin de quelques articles seulement ? Commandez simplement à la pièce.",
+    "featuredTitle": "Produits en vedette",
+    "viewAll": "Voir tout le catalogue",
+    "ctaBannerTitle": "Prêt à demander votre devis ?",
+    "ctaBannerText": "Choisissez vos produits et envoyez votre demande : vous recevez votre devis sur WhatsApp.",
+    "collectionsTitle": "Nos collections",
+    "collectionsSubtitle": "Choisissez une catégorie pour voir ses produits."
+  },
+  "catalogue": {
+    "title": "Catalogue",
+    "subtitle": "Parcourez nos produits et ajoutez-les à votre panier.",
+    "search": "Rechercher un produit…",
+    "empty": "Les produits arrivent bientôt. Revenez nous voir !",
+    "noResults": "Aucun produit ne correspond à votre recherche.",
+    "count": "{count} produit(s)",
+    "all": "Tous",
+    "emptyCategory": "Aucun produit dans cette collection pour le moment."
+  },
+  "product": {
+    "back": "Retour au catalogue",
+    "availability": {
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock",
+      "on_request": "Sur demande"
+    },
+    "color": "Couleur",
+    "scent": "Parfum",
+    "quantity": "Quantité",
+    "add": "Ajouter au panier",
+    "added": "Ajouté à votre panier",
+    "viewQuote": "Voir mon panier",
+    "unavailable": "Ce produit n'est pas disponible actuellement.",
+    "modes": "Disponible en gros et à la pièce",
+    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre panier et nous vous répondrons avec une offre.",
+    "more": "Plus de produits"
+  },
+  "footer": {
+    "tagline": "Produits chimiques et matériel de lavage auto.",
+    "rights": "Tous droits réservés."
+  },
+  "cart": {
+    "title": "Votre panier",
+    "subtitle": "Vérifiez vos produits, renseignez vos informations et envoyez votre demande de devis sur WhatsApp.",
+    "empty": "Votre panier est vide.",
+    "emptyCta": "Voir le catalogue",
+    "remove": "Retirer",
+    "clear": "Vider le panier",
+    "yourInfo": "Vos informations",
+    "fullName": "Nom complet",
+    "city": "Ville",
+    "type": "Type de commande",
+    "note": "Note (optionnel)",
+    "notePlaceholder": "Précisions, délais souhaités…",
+    "send": "Envoyer la demande sur WhatsApp",
+    "errName": "Veuillez entrer votre nom complet.",
+    "errCity": "Veuillez entrer votre ville.",
+    "sent": "Votre demande est prête dans WhatsApp. Envoyez le message pour la transmettre.",
+    "wa": {
+      "title": "Nouvelle demande de devis",
+      "customer": "Client :",
+      "type": "Type :",
+      "products": "Produits :",
+      "city": "Ville :",
+      "note": "Note :",
+      "closing": "Merci de nous fournir un devis."
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Sile Chemicals fournit des produits chimiques, des machines et des pièces de rechange pour le lavage automobile, en gros comme à la pièce.",
+    "v1Title": "Produits sélectionnés",
+    "v1Text": "Une gamme de produits et de matériel de lavage choisis pour leur efficacité et leur fiabilité.",
+    "v2Title": "Gros et détail",
+    "v2Text": "Commandez la quantité dont vous avez besoin, d'une seule pièce jusqu'aux grandes quantités.",
+    "v3Title": "Devis rapide",
+    "v3Text": "Envoyez votre demande en quelques clics et recevez votre devis directement sur WhatsApp.",
+    "ctaTitle": "Besoin d'un devis ?",
+    "ctaText": "Parcourez le catalogue et composez votre liste.",
+    "ctaButton": "Voir le catalogue"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une question ou un besoin particulier ? Contactez-nous.",
+    "whatsapp": "WhatsApp",
+    "whatsappText": "Écrivez-nous directement.",
+    "whatsappCta": "Ouvrir WhatsApp",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address": "Adresse",
+    "quoteTitle": "Vous connaissez déjà vos besoins ?",
+    "quoteCta": "Préparer ma demande de devis"
+  },
+  "bubble": {
+    "open": "Ouvrir mon panier",
+    "close": "Fermer",
+    "viewCart": "Voir le panier complet"
+  }
+}
