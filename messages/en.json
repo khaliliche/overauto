@@ -90,7 +90,9 @@
     "viewCart": "View my cart",
     "noteCod": "Pay on delivery, in cash.",
     "noteDelivery": "Delivery across Morocco.",
-    "priceConfirm": "We will confirm the price by phone before delivery."
+    "priceConfirm": "We will confirm the price by phone before delivery.",
+    "orderWhatsapp": "Order on WhatsApp",
+    "waOrder": "Hello, I would like to order: {title}"
   },
   "footer": {
     "tagline": "Online store for car washing products and equipment. Delivery across Morocco.",

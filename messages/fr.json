@@ -90,7 +90,9 @@
     "viewCart": "Voir mon panier",
     "noteCod": "Paiement à la livraison, en espèces.",
     "noteDelivery": "Livraison partout au Maroc.",
-    "priceConfirm": "Le prix vous sera confirmé par téléphone avant la livraison."
+    "priceConfirm": "Le prix vous sera confirmé par téléphone avant la livraison.",
+    "orderWhatsapp": "Commander sur WhatsApp",
+    "waOrder": "Bonjour, je souhaite commander : {title}"
   },
   "footer": {
     "tagline": "Boutique en ligne de produits et matériel de lavage auto. Livraison partout au Maroc.",

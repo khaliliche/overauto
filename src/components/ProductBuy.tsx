@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { buildCartItem, useCart } from "@/lib/cart";
 import { site, whatsappUrl } from "@/lib/site";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { loc, type Product, type Variant } from "@/lib/types";
 
 export default function ProductBuy({ product }: { product: Product }) {
@@ -154,6 +155,25 @@ export default function ProductBuy({ product }: { product: Product }) {
               {t("add")}
             </button>
           </div>
+
+          {site.whatsapp && (
+            <a
+              href={whatsappUrl(
+                t("waOrder", {
+                  title:
+                    loc(product, "title", locale) +
+                    (selected ? ` (${loc(selected, "name", locale)})` : "") +
+                    (qty > 1 ? ` × ${qty}` : ""),
+                })
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-full items-center justify-center gap-2 rounded-sm bg-[#25D366] px-6 py-3.5 font-display text-lg font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#1fb957] sm:w-auto sm:inline-flex"
+            >
+              <WhatsAppIcon size={18} />
+              {t("orderWhatsapp")}
+            </a>
+          )}
 
           {!hasPrice && (
             <p className="text-sm text-zinc-600">

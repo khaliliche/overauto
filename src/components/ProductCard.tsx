@@ -7,7 +7,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { buildCartItem, useCart } from "@/lib/cart";
 import { discountPercent, formatPrice } from "@/lib/money";
+import { site, whatsappUrl } from "@/lib/site";
 import { loc, type Product } from "@/lib/types";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function ProductCard({ product }: { product: Product }) {
   const locale = useLocale();
@@ -15,15 +17,21 @@ export default function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   const [done, setDone] = useState(false);
 
+  const variants = [...(product.variants ?? [])].sort(
+    (a, b) => a.sort_order - b.sort_order
+  );
+  const [variantId, setVariantId] = useState(variants[0]?.id ?? "");
+  const selected = variants.find((v) => v.id === variantId) ?? null;
+
   const title = loc(product, "title", locale);
   const image = product.images?.[0];
   const href = `/catalogue/${product.slug}`;
-  const hasVariants = (product.variants?.length ?? 0) > 0;
+  const hasVariants = variants.length > 0;
   const soldOut = product.availability === "out_of_stock";
   const off = discountPercent(product.price, product.compare_at_price);
 
   function quickAdd() {
-    add(buildCartItem(product, null), 1);
+    add(buildCartItem(product, selected), 1);
     setDone(true);
     setTimeout(() => setDone(false), 1600);
   }
@@ -94,26 +102,52 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className={`${btn} cursor-not-allowed bg-zinc-200 text-zinc-500`}>
             {t("availability.out_of_stock")}
           </span>
-        ) : hasVariants ? (
-          <Link
-            href={href}
-            className={`${btn} border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white`}
-          >
-            {t("choose")}
-          </Link>
         ) : (
-          <button
-            type="button"
-            onClick={quickAdd}
-            className={`${btn} ${
-              done
-                ? "bg-emerald-600 text-white"
-                : "bg-accent-700 text-white hover:bg-brand-600"
-            }`}
-          >
-            {done ? <Check size={16} /> : <ShoppingCart size={16} />}
-            {done ? t("added") : t("add")}
-          </button>
+          <div className="space-y-2">
+            {hasVariants && (
+              <select
+                value={variantId}
+                onChange={(e) => setVariantId(e.target.value)}
+                aria-label={t("choose")}
+                className="w-full rounded-sm border border-zinc-300 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-brand-600"
+              >
+                {variants.map((v) => (
+                  <option key={v.id} value={v.id}>
+                    {loc(v, "name", locale)}
+                  </option>
+                ))}
+              </select>
+            )}
+            <button
+              type="button"
+              onClick={quickAdd}
+              className={`${btn} ${
+                done
+                  ? "bg-emerald-600 text-white"
+                  : "bg-accent-700 text-white hover:bg-brand-600"
+              }`}
+            >
+              {done ? <Check size={16} /> : <ShoppingCart size={16} />}
+              {done ? t("added") : t("add")}
+            </button>
+            {site.whatsapp && (
+              <a
+                href={whatsappUrl(
+                  t("waOrder", {
+                    title:
+                      title +
+                      (selected ? ` (${loc(selected, "name", locale)})` : ""),
+                  })
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${btn} bg-[#25D366] text-white hover:bg-[#1fb957]`}
+              >
+                <WhatsAppIcon size={16} />
+                {t("orderWhatsapp")}
+              </a>
+            )}
+          </div>
         )}
       </div>
     </div>
