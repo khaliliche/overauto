@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #eef7fd;
-  --color-brand-100: #d6ecfa;
-  --color-brand-200: #a9d8f4;
-  --color-brand-400: #4aa8e0;
-  --color-brand-500: #1e8bd0;
-  --color-brand-600: #017aba;
-  --color-brand-700: #115c91;
-  --color-brand-900: #0d3b5e;
+  --color-brand-50: #fdf0f0;
+  --color-brand-100: #fadcdc;
+  --color-brand-200: #f4b4b5;
+  --color-brand-400: #e04a4d;
+  --color-brand-500: #d42a2e;
+  --color-brand-600: #c8191e;
+  --color-brand-700: #a31318;
+  --color-brand-900: #5e0a0d;
 
-  --color-accent-100: #fde4ee;
-  --color-accent-200: #fbc4d8;
-  --color-accent-400: #f26a98;
-  --color-accent-500: #e8457f;
-  --color-accent-600: #d02f69;
-  --color-accent-700: #a8244f;
-  --color-accent-800: #7f1b3b;
+  --color-accent-100: #ececec;
+  --color-accent-200: #d4d4d4;
+  --color-accent-400: #52525b;
+  --color-accent-500: #27272a;
+  --color-accent-600: #18181b;
+  --color-accent-700: #0f0f11;
+  --color-accent-800: #000000;
 }
 
 @theme inline {
   --font-sans: var(--font-jakarta), var(--font-cairo), system-ui, sans-serif;
+  --font-display: var(--font-barlow), var(--font-cairo), system-ui, sans-serif;
 }
 
 html {
@@ -31,8 +32,10 @@ body {
   font-family: var(--font-sans);
 }
 
-html[dir="rtl"] body {
+html[dir="rtl"] body,
+html[dir="rtl"] .font-display {
   font-family: var(--font-cairo), system-ui, sans-serif;
+  letter-spacing: 0;
 }
 @keyframes bubble-pop {
   0% { transform: scale(0.3); opacity: 0; }

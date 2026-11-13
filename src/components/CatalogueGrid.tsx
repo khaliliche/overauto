@@ -7,6 +7,8 @@ import { useLocale, useTranslations } from "next-intl";
 import ProductCard from "./ProductCard";
 import { loc, type Category, type Product } from "@/lib/types";
 
+type Sort = "new" | "priceAsc" | "priceDesc";
+
 export default function CatalogueGrid({
   products,
   categories,
@@ -16,14 +18,23 @@ export default function CatalogueGrid({
 }) {
   const t = useTranslations("catalogue");
   const locale = useLocale();
-  const [q, setQ] = useState("");
   const searchParams = useSearchParams();
+  const [q, setQ] = useState(searchParams.get("q") ?? "");
+  const [sort, setSort] = useState<Sort>("new");
 
   // The active category lives in the URL: /catalogue?category=concentre-5kg
   const param = searchParams.get("category");
   const cat =
     param && categories.some((c) => c.slug === param) ? param : "all";
   const active = categories.find((c) => c.slug === cat);
+
+  // Header search sends the visitor here with ?q=... : keep the box in sync.
+  const urlQ = searchParams.get("q") ?? "";
+  const [prevUrlQ, setPrevUrlQ] = useState(urlQ);
+  if (urlQ !== prevUrlQ) {
+    setPrevUrlQ(urlQ);
+    setQ(urlQ);
+  }
 
   // Arriving from a collection card: scroll down to the products.
   const gridRef = useRef<HTMLDivElement>(null);
@@ -44,39 +55,38 @@ export default function CatalogueGrid({
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase();
-    return products.filter((p) => {
+    const list = products.filter((p) => {
       if (cat !== "all" && p.category?.slug !== cat) return false;
       if (!s) return true;
       return [p.title_fr, p.title_en, p.title_ar].some((x) =>
         x.toLowerCase().includes(s)
       );
     });
-  }, [q, cat, products]);
+    if (sort === "priceAsc") list.sort((a, b) => a.price - b.price);
+    if (sort === "priceDesc") list.sort((a, b) => b.price - a.price);
+    return list;
+  }, [q, cat, sort, products]);
 
   if (products.length === 0) {
     return (
-      <div className="rounded-3xl border-2 border-dashed border-brand-200 bg-brand-50/50 p-14 text-center text-slate-500">
+      <div className="rounded-sm border-2 border-dashed border-zinc-300 bg-zinc-50 p-14 text-center text-zinc-500">
         {t("empty")}
       </div>
     );
   }
 
-  const chip = (active: boolean) =>
-    `shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-bold transition-colors ${
-      active
+  const chip = (isActive: boolean) =>
+    `shrink-0 whitespace-nowrap rounded-sm border px-4 py-2 text-sm font-bold transition-colors ${
+      isActive
         ? "border-brand-600 bg-brand-600 text-white"
-        : "border-brand-200 text-slate-700 hover:bg-brand-50"
+        : "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-900"
     }`;
 
   return (
-    <div ref={gridRef} className="scroll-mt-24">
+    <div ref={gridRef} className="scroll-mt-32">
       {categories.length > 0 && (
         <div className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
-          <button
-            type="button"
-            onClick={() => pick("all")}
-            className={chip(cat === "all")}
-          >
+          <button type="button" onClick={() => pick("all")} className={chip(cat === "all")}>
             {t("all")}
           </button>
           {categories.map((c) => (
@@ -93,7 +103,7 @@ export default function CatalogueGrid({
       )}
 
       {active && (
-        <h2 className="mb-6 text-2xl font-extrabold text-brand-900">
+        <h2 className="mb-6 font-display text-3xl font-extrabold uppercase text-zinc-900">
           {loc(active, "name", locale)}
         </h2>
       )}
@@ -102,24 +112,37 @@ export default function CatalogueGrid({
         <div className="relative w-full sm:max-w-sm">
           <Search
             size={18}
-            className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"
+            className="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-zinc-400"
           />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={t("search")}
-            className="w-full rounded-full border border-brand-200 bg-white py-3 pe-4 ps-11 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+            className="w-full rounded-sm border border-zinc-300 bg-white py-2.5 pe-4 ps-10 text-sm outline-none focus:border-brand-600"
           />
         </div>
-        <p className="text-sm font-semibold text-slate-500">
-          {t("count", { count: filtered.length })}
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="text-sm font-semibold text-zinc-500">
+            {t("count", { count: filtered.length })}
+          </p>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as Sort)}
+            className="rounded-sm border border-zinc-300 bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-brand-600"
+          >
+            <option value="new">{t("sortNew")}</option>
+            <option value="priceAsc">{t("sortPriceAsc")}</option>
+            <option value="priceDesc">{t("sortPriceDesc")}</option>
+          </select>
+        </div>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-12 text-center text-slate-500">{t(q.trim() === "" && cat !== "all" ? "emptyCategory" : "noResults")}</p>
+        <p className="py-12 text-center text-zinc-500">
+          {t(q.trim() === "" && cat !== "all" ? "emptyCategory" : "noResults")}
+        </p>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
           {filtered.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

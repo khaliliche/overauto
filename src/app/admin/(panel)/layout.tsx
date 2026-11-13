@@ -18,7 +18,7 @@ export default async function PanelLayout({
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
           <div className="flex items-center gap-6">
             <span className="font-extrabold text-brand-700">
-              Sile <span className="text-accent-500">Chemicals</span>{" "}
+              Over <span className="text-accent-500">Auto</span>{" "}
               <span className="text-xs font-semibold text-slate-400">
                 Admin
               </span>
@@ -26,6 +26,9 @@ export default async function PanelLayout({
             <nav className="flex gap-4 text-sm font-semibold text-slate-600">
               <Link href="/admin/products" className="hover:text-brand-600">
                 Produits
+              </Link>
+              <Link href="/admin/orders" className="hover:text-brand-600">
+                Commandes
               </Link>
             </nav>
           </div>

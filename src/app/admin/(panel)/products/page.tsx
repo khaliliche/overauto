@@ -15,7 +15,7 @@ export default async function ProductsPage() {
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-brand-900">Produits</h1>
+        <h1 className="text-2xl font-bold text-zinc-900">Produits</h1>
         <Link
           href="/admin/products/new"
           className="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-brand-700"

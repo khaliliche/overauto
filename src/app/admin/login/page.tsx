@@ -31,10 +31,10 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-linear-to-b from-brand-50 to-white px-4">
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-sm rounded-3xl border border-brand-100 bg-white p-8 shadow-lg"
+        className="w-full max-w-sm rounded-md border border-brand-100 bg-white p-8 shadow-lg"
       >
         <p className="text-center text-2xl font-extrabold text-brand-700">
-          Sile <span className="text-accent-500">Chemicals</span>
+          Over <span className="text-accent-500">Auto</span>
         </p>
         <p className="mb-6 mt-1 text-center text-sm text-slate-500">
           Espace administrateur

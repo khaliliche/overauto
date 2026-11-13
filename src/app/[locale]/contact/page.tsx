@@ -17,11 +17,11 @@ function InfoCard({
   tile?: string;
 }) {
   return (
-    <div className="flex w-full flex-col items-center rounded-3xl border border-brand-100 bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-100 sm:w-72 lg:w-64">
-      <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl ${tile}`}>
+    <div className="flex w-full flex-col items-center rounded-sm border border-brand-100 bg-white p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-100 sm:w-72 lg:w-64">
+      <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-sm ${tile}`}>
         {icon}
       </div>
-      <h2 className="font-bold text-brand-900">{label}</h2>
+      <h2 className="font-bold text-zinc-900">{label}</h2>
       <div className="mt-3 flex w-full flex-1 flex-col items-center gap-4 text-slate-600">{children}</div>
     </div>
   );
@@ -45,8 +45,8 @@ export default async function ContactPage({
   const t = await getTranslations("contact");
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="text-3xl font-extrabold text-brand-900 sm:text-4xl">
+    <section className="mx-auto max-w-7xl px-4 py-12">
+      <h1 className="font-display text-4xl font-extrabold uppercase text-zinc-900 sm:text-5xl">
         {t("title")}
       </h1>
       <p className="mt-2 text-slate-600">{t("subtitle")}</p>
@@ -63,7 +63,7 @@ export default async function ContactPage({
               href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#1fb957]"
+              className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#25D366] px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#1fb957]"
             >
               <WhatsAppIcon size={18} />
               {t("whatsappCta")}
@@ -76,7 +76,7 @@ export default async function ContactPage({
             <a
               href={`tel:${site.phone.replace(/\s/g, "")}`}
               dir="ltr"
-              className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700"
+              className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-sm bg-brand-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-700"
             >
               <Phone size={16} />{site.phone}
             </a>
@@ -102,13 +102,13 @@ export default async function ContactPage({
         )}
       </div>
 
-      <div className="mt-10 rounded-3xl bg-brand-50 p-8 text-center">
-        <h2 className="text-xl font-extrabold text-brand-900">
+      <div className="mt-10 rounded-sm bg-brand-50 p-8 text-center">
+        <h2 className="text-xl font-extrabold text-zinc-900">
           {t("quoteTitle")}
         </h2>
         <Link
           href="/cart"
-          className="mt-5 inline-block rounded-full bg-brand-600 px-7 py-3 font-semibold text-white transition-colors hover:bg-brand-700"
+          className="mt-5 inline-block rounded-sm bg-brand-600 px-7 py-3 font-semibold text-white transition-colors hover:bg-brand-700"
         >
           {t("quoteCta")}
         </Link>

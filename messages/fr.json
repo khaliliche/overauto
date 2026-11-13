@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Sile Chemicals — Produits chimiques et matériel de lavage auto",
-    "description": "Concentrés, produits individuels, machines et pièces de rechange pour le lavage automobile. Demandez votre devis en quelques clics."
+    "title": "Over Auto — Boutique en ligne : produits et matériel de lavage auto",
+    "description": "Produits chimiques, machines et pièces pour le lavage automobile. Commandez en ligne, livraison partout au Maroc, paiement à la livraison."
   },
   "nav": {
     "home": "Accueil",
@@ -9,7 +9,9 @@
     "about": "À propos",
     "contact": "Contact",
     "quote": "Panier",
-    "menu": "Menu"
+    "menu": "Menu",
+    "search": "Rechercher un produit…",
+    "cart": "Panier"
   },
   "common": {
     "wholesale": "Gros",
@@ -17,11 +19,11 @@
     "requestQuote": "Demander un devis"
   },
   "home": {
-    "title": "Bienvenue chez Sile Chemicals !",
-    "subtitle": "Nous sommes ravis de vous accueillir et de vous présenter nos produits et notre activité.",
-    "company": "Sile Chemicals propose une gamme de produits chimiques concentrés et de matériel de nettoyage automobile, 100 % Made in Italy, de très bonne qualité et à des prix très adaptés. Appelez-nous pour profiter vite de nos différentes gammes.",
-    "ctaCatalogue": "Voir le catalogue",
-    "ctaQuote": "Demander un devis",
+    "title": "Tout pour le lavage auto,",
+    "subtitle": "Produits concentrés, machines et pièces de rechange. Commandez en quelques clics et payez à la livraison.",
+    "company": "Over Auto propose une gamme de produits chimiques concentrés et de matériel de nettoyage automobile, 100 % Made in Italy, de très bonne qualité et à des prix très adaptés. Appelez-nous pour profiter vite de nos différentes gammes.",
+    "ctaCatalogue": "Acheter maintenant",
+    "ctaQuote": "Commander sur WhatsApp",
     "modesTitle": "En gros ou à la pièce, comme vous voulez",
     "wholesaleTitle": "Achat en gros",
     "wholesaleText": "Des quantités adaptées aux professionnels : stations de lavage, garages, détaillants et revendeurs.",
@@ -32,17 +34,36 @@
     "ctaBannerTitle": "Prêt à demander votre devis ?",
     "ctaBannerText": "Choisissez vos produits et envoyez votre demande : vous recevez votre devis sur WhatsApp.",
     "collectionsTitle": "Nos collections",
-    "collectionsSubtitle": "Choisissez une catégorie pour voir ses produits."
+    "collectionsSubtitle": "Choisissez une catégorie pour voir ses produits.",
+    "badge": "Made in Italy",
+    "titleAccent": "livré chez vous.",
+    "ctaWhatsapp": "WhatsApp",
+    "trust1Title": "Paiement à la livraison",
+    "trust1Text": "Vous payez en espèces à la réception.",
+    "trust2Title": "Livraison au Maroc",
+    "trust2Text": "Expédition rapide dans toutes les villes.",
+    "trust3Title": "Qualité italienne",
+    "trust3Text": "Des produits sélectionnés pour les pros.",
+    "trust4Title": "Support WhatsApp",
+    "trust4Text": "Une question ? Nous répondons vite.",
+    "bestTitle": "Meilleures ventes",
+    "newTitle": "Nouveautés",
+    "promoTitle": "Commandez maintenant, payez à la livraison",
+    "promoText": "Ajoutez vos produits au panier, remplissez vos informations et nous vous appelons pour confirmer.",
+    "promoCta": "Voir le catalogue"
   },
   "catalogue": {
     "title": "Catalogue",
-    "subtitle": "Parcourez nos produits et ajoutez-les à votre panier.",
+    "subtitle": "Parcourez nos produits et commandez en ligne.",
     "search": "Rechercher un produit…",
     "empty": "Les produits arrivent bientôt. Revenez nous voir !",
     "noResults": "Aucun produit ne correspond à votre recherche.",
     "count": "{count} produit(s)",
     "all": "Tous",
-    "emptyCategory": "Aucun produit dans cette collection pour le moment."
+    "emptyCategory": "Aucun produit dans cette collection pour le moment.",
+    "sortNew": "Nouveautés",
+    "sortPriceAsc": "Prix croissant",
+    "sortPriceDesc": "Prix décroissant"
   },
   "product": {
     "back": "Retour au catalogue",
@@ -55,32 +76,46 @@
     "scent": "Parfum",
     "quantity": "Quantité",
     "add": "Ajouter au panier",
-    "added": "Ajouté à votre panier",
+    "added": "Ajouté au panier",
     "viewQuote": "Voir mon panier",
-    "unavailable": "Ce produit n'est pas disponible actuellement.",
+    "unavailable": "Ce produit est en rupture de stock.",
     "modes": "Disponible en gros et à la pièce",
     "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre panier et nous vous répondrons avec une offre.",
-    "more": "Plus de produits"
+    "more": "Plus de produits",
+    "priceOnRequest": "Prix sur demande",
+    "askWhatsapp": "Demander le prix sur WhatsApp",
+    "view": "Voir le produit",
+    "choose": "Choisir une option",
+    "buyNow": "Acheter maintenant",
+    "viewCart": "Voir mon panier",
+    "noteCod": "Paiement à la livraison, en espèces.",
+    "noteDelivery": "Livraison partout au Maroc."
   },
   "footer": {
-    "tagline": "Produits chimiques et matériel de lavage auto.",
-    "rights": "Tous droits réservés."
+    "tagline": "Boutique en ligne de produits et matériel de lavage auto. Livraison partout au Maroc.",
+    "rights": "Tous droits réservés.",
+    "shop": "Boutique",
+    "help": "Aide",
+    "help1": "Paiement à la livraison",
+    "help2": "Livraison partout au Maroc",
+    "help3": "Confirmation par téléphone",
+    "contact": "Contact"
   },
   "cart": {
-    "title": "Votre panier",
-    "subtitle": "Vérifiez vos produits, renseignez vos informations et envoyez votre demande de devis sur WhatsApp.",
+    "title": "Mon panier",
+    "subtitle": "Vérifiez vos produits et renseignez vos informations de livraison.",
     "empty": "Votre panier est vide.",
     "emptyCta": "Voir le catalogue",
     "remove": "Retirer",
     "clear": "Vider le panier",
-    "yourInfo": "Vos informations",
+    "yourInfo": "Informations de livraison",
     "fullName": "Nom complet",
     "city": "Ville",
     "type": "Type de commande",
     "note": "Note (optionnel)",
-    "notePlaceholder": "Précisions, délais souhaités…",
+    "notePlaceholder": "Précisions pour la livraison…",
     "send": "Envoyer la demande sur WhatsApp",
-    "errName": "Veuillez entrer votre nom complet.",
+    "errName": "Veuillez entrer votre nom.",
     "errCity": "Veuillez entrer votre ville.",
     "sent": "Votre demande est prête dans WhatsApp. Envoyez le message pour la transmettre.",
     "wa": {
@@ -91,19 +126,36 @@
       "city": "Ville :",
       "note": "Note :",
       "closing": "Merci de nous fournir un devis."
-    }
+    },
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "cod": "Paiement à la livraison",
+    "codText": "Vous payez en espèces au livreur à la réception de votre commande.",
+    "summary": "Récapitulatif",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "free": "Gratuite",
+    "total": "Total",
+    "freeFrom": "Plus que {amount} pour la livraison gratuite !",
+    "placeOrder": "Confirmer la commande",
+    "placing": "Envoi en cours…",
+    "continue": "Continuer mes achats",
+    "errPhone": "Numéro de téléphone invalide.",
+    "errAddress": "Veuillez entrer votre adresse.",
+    "errUnavailable": "Un produit n'est plus disponible. Actualisez la page.",
+    "errGeneric": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp."
   },
   "about": {
     "title": "À propos",
-    "intro": "Sile Chemicals fournit des produits chimiques, des machines et des pièces de rechange pour le lavage automobile, en gros comme à la pièce.",
+    "intro": "Over Auto est votre boutique en ligne de produits chimiques, machines et pièces de rechange pour le lavage automobile.",
     "v1Title": "Produits sélectionnés",
     "v1Text": "Une gamme de produits et de matériel de lavage choisis pour leur efficacité et leur fiabilité.",
-    "v2Title": "Gros et détail",
+    "v2Title": "Du détail au gros",
     "v2Text": "Commandez la quantité dont vous avez besoin, d'une seule pièce jusqu'aux grandes quantités.",
-    "v3Title": "Devis rapide",
-    "v3Text": "Envoyez votre demande en quelques clics et recevez votre devis directement sur WhatsApp.",
-    "ctaTitle": "Besoin d'un devis ?",
-    "ctaText": "Parcourez le catalogue et composez votre liste.",
+    "v3Title": "Commande simple",
+    "v3Text": "Commandez en quelques clics, nous vous appelons pour confirmer et vous livrons partout au Maroc.",
+    "ctaTitle": "Prêt à commander ?",
+    "ctaText": "Parcourez le catalogue et payez à la livraison.",
     "ctaButton": "Voir le catalogue"
   },
   "contact": {
@@ -115,12 +167,26 @@
     "phone": "Téléphone",
     "email": "Email",
     "address": "Adresse",
-    "quoteTitle": "Vous connaissez déjà vos besoins ?",
-    "quoteCta": "Préparer ma demande de devis"
+    "quoteTitle": "Prêt à commander ?",
+    "quoteCta": "Voir mon panier"
   },
   "bubble": {
     "open": "Ouvrir mon panier",
     "close": "Fermer",
     "viewCart": "Voir le panier complet"
+  },
+  "topbar": {
+    "a": "Paiement à la livraison",
+    "b": "Livraison partout au Maroc",
+    "c": "Support WhatsApp 7j/7"
+  },
+  "success": {
+    "title": "Commande confirmée !",
+    "number": "Commande n° {n}",
+    "text": "Merci pour votre confiance. Nous vous appellerons très bientôt pour confirmer la livraison. Vous payez à la réception.",
+    "total": "Total à payer à la livraison",
+    "whatsapp": "Écrire sur WhatsApp",
+    "waMessage": "Bonjour, j'ai passé la commande n° {n} sur Over Auto.",
+    "continue": "Continuer mes achats"
   }
 }

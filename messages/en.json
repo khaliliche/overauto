@@ -1,15 +1,17 @@
 {
   "meta": {
-    "title": "Sile Chemicals — Car washing chemicals and equipment",
-    "description": "Concentrates, individual products, machines and spare parts for car washing. Request your quote in a few clicks."
+    "title": "Over Auto — Online store: car washing products and equipment",
+    "description": "Chemicals, machines and spare parts for car washing. Order online, delivery across Morocco, pay on delivery."
   },
   "nav": {
     "home": "Home",
     "catalogue": "Catalogue",
     "about": "About",
     "contact": "Contact",
-    "quote": "Quote",
-    "menu": "Menu"
+    "quote": "Cart",
+    "menu": "Menu",
+    "search": "Search for a product…",
+    "cart": "Cart"
   },
   "common": {
     "wholesale": "Wholesale",
@@ -17,11 +19,11 @@
     "requestQuote": "Request a quote"
   },
   "home": {
-    "title": "Welcome to Sile Chemicals!",
-    "subtitle": "We are delighted to welcome you and to introduce our products and our business.",
-    "company": "Sile Chemicals offers a range of concentrated chemical products and car cleaning equipment, 100% Made in Italy, of very good quality at very suitable prices. Call us to quickly take advantage of our different ranges.",
-    "ctaCatalogue": "View catalogue",
-    "ctaQuote": "Request a quote",
+    "title": "Everything for car washing,",
+    "subtitle": "Concentrated products, machines and spare parts. Order in a few clicks and pay on delivery.",
+    "company": "Over Auto offers a range of concentrated chemical products and car cleaning equipment, 100% Made in Italy, of very good quality at very suitable prices. Call us to quickly take advantage of our different ranges.",
+    "ctaCatalogue": "Shop now",
+    "ctaQuote": "Order on WhatsApp",
     "modesTitle": "Wholesale or piece by piece, your choice",
     "wholesaleTitle": "Wholesale",
     "wholesaleText": "Quantities made for professionals: car wash stations, garages, retailers and resellers.",
@@ -32,17 +34,36 @@
     "ctaBannerTitle": "Ready to request your quote?",
     "ctaBannerText": "Choose your products and send your request: you receive your quotation on WhatsApp.",
     "collectionsTitle": "Our collections",
-    "collectionsSubtitle": "Pick a category to see its products."
+    "collectionsSubtitle": "Pick a category to see its products.",
+    "badge": "Made in Italy",
+    "titleAccent": "delivered to you.",
+    "ctaWhatsapp": "WhatsApp",
+    "trust1Title": "Pay on delivery",
+    "trust1Text": "You pay in cash when you receive your order.",
+    "trust2Title": "Delivery in Morocco",
+    "trust2Text": "Fast shipping to every city.",
+    "trust3Title": "Italian quality",
+    "trust3Text": "Products selected for professionals.",
+    "trust4Title": "WhatsApp support",
+    "trust4Text": "A question? We reply fast.",
+    "bestTitle": "Best sellers",
+    "newTitle": "New arrivals",
+    "promoTitle": "Order now, pay on delivery",
+    "promoText": "Add products to your cart, fill in your details and we call you to confirm.",
+    "promoCta": "View catalogue"
   },
   "catalogue": {
     "title": "Catalogue",
-    "subtitle": "Browse our products and add them to your quote request.",
+    "subtitle": "Browse our products and order online.",
     "search": "Search for a product…",
     "empty": "Products are coming soon. Check back shortly!",
     "noResults": "No product matches your search.",
     "count": "{count} product(s)",
     "all": "All",
-    "emptyCategory": "No products in this collection yet."
+    "emptyCategory": "No products in this collection yet.",
+    "sortNew": "Newest",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low"
   },
   "product": {
     "back": "Back to catalogue",
@@ -54,33 +75,47 @@
     "color": "Color",
     "scent": "Scent",
     "quantity": "Quantity",
-    "add": "Add to quote",
-    "added": "Added to your quote",
+    "add": "Add to cart",
+    "added": "Added to cart",
     "viewQuote": "View my quote",
-    "unavailable": "This product is currently unavailable.",
+    "unavailable": "This product is out of stock.",
     "modes": "Available wholesale and piece by piece",
     "priceNote": "Prices are not displayed: add this product to your quote and we will reply with an offer.",
-    "more": "More products"
+    "more": "More products",
+    "priceOnRequest": "Price on request",
+    "askWhatsapp": "Ask for the price on WhatsApp",
+    "view": "View product",
+    "choose": "Choose an option",
+    "buyNow": "Buy now",
+    "viewCart": "View my cart",
+    "noteCod": "Pay on delivery, in cash.",
+    "noteDelivery": "Delivery across Morocco."
   },
   "footer": {
-    "tagline": "Car washing chemicals and equipment.",
-    "rights": "All rights reserved."
+    "tagline": "Online store for car washing products and equipment. Delivery across Morocco.",
+    "rights": "All rights reserved.",
+    "shop": "Shop",
+    "help": "Help",
+    "help1": "Pay on delivery",
+    "help2": "Delivery across Morocco",
+    "help3": "Confirmation by phone",
+    "contact": "Contact"
   },
   "cart": {
-    "title": "Your quote request",
-    "subtitle": "Review your products, fill in your details and send your quote request on WhatsApp.",
-    "empty": "Your list is empty.",
+    "title": "My cart",
+    "subtitle": "Check your products and enter your delivery details.",
+    "empty": "Your cart is empty.",
     "emptyCta": "View catalogue",
     "remove": "Remove",
     "clear": "Clear list",
-    "yourInfo": "Your details",
+    "yourInfo": "Delivery details",
     "fullName": "Full name",
     "city": "City",
     "type": "Order type",
     "note": "Note (optional)",
-    "notePlaceholder": "Details, preferred timing…",
+    "notePlaceholder": "Delivery instructions…",
     "send": "Send request on WhatsApp",
-    "errName": "Please enter your full name.",
+    "errName": "Please enter your name.",
     "errCity": "Please enter your city.",
     "sent": "Your request is ready in WhatsApp. Send the message to submit it.",
     "wa": {
@@ -91,19 +126,36 @@
       "city": "City:",
       "note": "Note:",
       "closing": "Please provide a quotation."
-    }
+    },
+    "phone": "Phone",
+    "address": "Address",
+    "cod": "Pay on delivery",
+    "codText": "You pay the courier in cash when you receive your order.",
+    "summary": "Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "freeFrom": "Only {amount} more for free shipping!",
+    "placeOrder": "Place order",
+    "placing": "Sending…",
+    "continue": "Continue shopping",
+    "errPhone": "Invalid phone number.",
+    "errAddress": "Please enter your address.",
+    "errUnavailable": "A product is no longer available. Refresh the page.",
+    "errGeneric": "Something went wrong. Try again or contact us on WhatsApp."
   },
   "about": {
     "title": "About",
-    "intro": "Sile Chemicals supplies chemical products, machines and spare parts for car washing, wholesale and piece by piece.",
+    "intro": "Over Auto is your online store for chemicals, machines and spare parts for car washing.",
     "v1Title": "Selected products",
     "v1Text": "A range of washing products and equipment chosen for their efficiency and reliability.",
-    "v2Title": "Wholesale and retail",
+    "v2Title": "Retail to wholesale",
     "v2Text": "Order the quantity you need, from a single piece to large volumes.",
-    "v3Title": "Fast quotation",
-    "v3Text": "Send your request in a few clicks and receive your quotation directly on WhatsApp.",
-    "ctaTitle": "Need a quote?",
-    "ctaText": "Browse the catalogue and build your list.",
+    "v3Title": "Simple ordering",
+    "v3Text": "Order in a few clicks, we call you to confirm and deliver anywhere in Morocco.",
+    "ctaTitle": "Ready to order?",
+    "ctaText": "Browse the catalogue and pay on delivery.",
     "ctaButton": "View catalogue"
   },
   "contact": {
@@ -115,12 +167,26 @@
     "phone": "Phone",
     "email": "Email",
     "address": "Address",
-    "quoteTitle": "Already know what you need?",
-    "quoteCta": "Prepare my quote request"
+    "quoteTitle": "Ready to order?",
+    "quoteCta": "View my cart"
   },
   "bubble": {
     "open": "Open my cart",
     "close": "Close",
     "viewCart": "View full cart"
+  },
+  "topbar": {
+    "a": "Pay on delivery",
+    "b": "Delivery across Morocco",
+    "c": "WhatsApp support 7/7"
+  },
+  "success": {
+    "title": "Order confirmed!",
+    "number": "Order #{n}",
+    "text": "Thank you for your trust. We will call you very soon to confirm delivery. You pay when you receive it.",
+    "total": "Total to pay on delivery",
+    "whatsapp": "Write on WhatsApp",
+    "waMessage": "Hello, I placed order #{n} on Over Auto.",
+    "continue": "Continue shopping"
   }
 }

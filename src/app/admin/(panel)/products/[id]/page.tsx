@@ -27,7 +27,7 @@ export default async function EditProductPage({
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-brand-900">
+      <h1 className="mb-6 text-2xl font-bold text-zinc-900">
         Modifier le produit
       </h1>
       <ProductForm

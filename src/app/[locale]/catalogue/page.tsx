@@ -28,11 +28,12 @@ export default async function CataloguePage({
   ]);
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="text-3xl font-extrabold text-brand-900 sm:text-4xl">
+    <section className="mx-auto max-w-7xl px-4 py-10">
+      <h1 className="font-display text-4xl font-extrabold uppercase text-zinc-900 sm:text-5xl">
         {t("title")}
+        <span className="mt-2 block h-1 w-16 bg-brand-600" />
       </h1>
-      <p className="mb-10 mt-2 text-slate-600">{t("subtitle")}</p>
+      <p className="mb-8 mt-3 text-zinc-600">{t("subtitle")}</p>
       <Suspense>
         <CatalogueGrid products={products} categories={categories} />
       </Suspense>

@@ -28,6 +28,8 @@ type FormState = {
   availability: string;
   is_visible: boolean;
   is_featured: boolean;
+  price: string;
+  compare_at_price: string;
 };
 
 type VariantDraft = {
@@ -66,7 +68,7 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-5">
+    <section className="rounded-md border border-slate-200 bg-white p-5">
       <h2 className="font-bold text-slate-800">{title}</h2>
       {hint && <p className="mb-4 mt-0.5 text-xs text-slate-500">{hint}</p>}
       {!hint && <div className="mb-4" />}
@@ -96,6 +98,10 @@ export default function ProductForm({
     availability: product?.availability ?? "in_stock",
     is_visible: product?.is_visible ?? true,
     is_featured: product?.is_featured ?? false,
+    price: product?.price ? String(product.price) : "",
+    compare_at_price: product?.compare_at_price
+      ? String(product.compare_at_price)
+      : "",
   });
   const [slugTouched, setSlugTouched] = useState(!!product);
   const [image, setImage] = useState<string>(product?.images?.[0] ?? "");
@@ -233,8 +239,18 @@ export default function ProductForm({
 
     setSaving(true);
     const supabase = createClient();
+    const price = Number(f.price.replace(",", "."));
+    const compare = f.compare_at_price.trim()
+      ? Number(f.compare_at_price.replace(",", "."))
+      : null;
+    if (!Number.isFinite(price) || price < 0)
+      return setError("Le prix est invalide.");
+    if (compare !== null && (!Number.isFinite(compare) || compare < 0))
+      return setError("L'ancien prix est invalide.");
     const payload = {
       ...f,
+      price,
+      compare_at_price: compare && compare > price ? compare : null,
       slug,
       images: image ? [image] : [],
     };
@@ -328,6 +344,32 @@ export default function ProductForm({
               />
             </Field>
           ))}
+        </div>
+      </Card>
+
+      <Card
+        title="Prix (DH)"
+        hint="Prix de vente en dirhams. Laissez 0 pour afficher « Prix sur demande » (le produit ne peut pas être commandé en ligne)."
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Prix de vente *">
+            <input
+              className={input}
+              inputMode="decimal"
+              value={f.price}
+              onChange={(e) => set("price", e.target.value)}
+              placeholder="120"
+            />
+          </Field>
+          <Field label="Ancien prix barré (optionnel)">
+            <input
+              className={input}
+              inputMode="decimal"
+              value={f.compare_at_price}
+              onChange={(e) => set("compare_at_price", e.target.value)}
+              placeholder="150"
+            />
+          </Field>
         </div>
       </Card>
 

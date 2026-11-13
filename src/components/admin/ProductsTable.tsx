@@ -69,7 +69,7 @@ export default function ProductsTable({ products }: { products: Product[] }) {
 
   if (products.length === 0) {
     return (
-      <div className="rounded-2xl border-2 border-dashed border-slate-300 p-12 text-center text-slate-500">
+      <div className="rounded-md border-2 border-dashed border-slate-300 p-12 text-center text-slate-500">
         Aucun produit pour le moment. Cliquez sur « Nouveau produit » pour
         commencer.
       </div>
@@ -77,11 +77,12 @@ export default function ProductsTable({ products }: { products: Product[] }) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-      <table className="w-full min-w-170 text-sm">
+    <div className="overflow-x-auto rounded-md border border-slate-200 bg-white">
+      <table className="w-full min-w-190 text-sm">
         <thead className="bg-slate-50 text-left text-xs font-bold uppercase text-slate-500">
           <tr>
             <th className="px-4 py-3">Produit</th>
+            <th className="px-4 py-3">Prix</th>
             <th className="px-4 py-3">Disponibilité</th>
             <th className="px-4 py-3">Visible</th>
             <th className="px-4 py-3">Vedette</th>
@@ -114,6 +115,20 @@ export default function ProductsTable({ products }: { products: Product[] }) {
                       </p>
                     </div>
                   </div>
+                </td>
+                <td className="px-4 py-3 font-semibold text-slate-800">
+                  {Number(p.price) > 0 ? (
+                    <>
+                      {Number(p.price)} DH
+                      {p.compare_at_price ? (
+                        <span className="ml-2 text-xs font-normal text-slate-400 line-through">
+                          {Number(p.compare_at_price)}
+                        </span>
+                      ) : null}
+                    </>
+                  ) : (
+                    <span className="text-xs font-bold text-amber-600">À définir</span>
+                  )}
                 </td>
                 <td className="px-4 py-3">
                   <span

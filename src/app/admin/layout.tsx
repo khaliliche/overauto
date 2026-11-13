@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Admin | Sile Chemicals",
+  title: "Admin | Over Auto",
   robots: { index: false, follow: false },
 };
 

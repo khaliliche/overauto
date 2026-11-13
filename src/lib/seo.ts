@@ -14,7 +14,7 @@ export const siteUrl = (
 export const googleVerification =
   process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "";
 
-export const SITE_NAME = "Sile Chemicals";
+export const SITE_NAME = "Over Auto";
 
 // Default share image. For a better WhatsApp/Facebook preview, add a
 // 1200x630 image at public/og.jpg and change this to "/og.jpg".
@@ -130,6 +130,20 @@ export function productJsonLd(p: Product, locale: string) {
         sku: p.slug,
         ...(description ? { description } : {}),
         ...(p.images?.length ? { image: p.images } : {}),
+        ...(Number(p.price) > 0
+          ? {
+              offers: {
+                "@type": "Offer",
+                url,
+                price: Number(p.price),
+                priceCurrency: "MAD",
+                availability:
+                  p.availability === "out_of_stock"
+                    ? "https://schema.org/OutOfStock"
+                    : "https://schema.org/InStock",
+              },
+            }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",

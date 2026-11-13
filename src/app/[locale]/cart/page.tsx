@@ -1,6 +1,9 @@
 import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import CartView from "@/components/CartView";
+import { getSettings } from "@/lib/settings";
+
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,
@@ -17,5 +20,6 @@ export default async function CartPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <CartView />;
+  const settings = await getSettings();
+  return <CartView settings={settings} />;
 }

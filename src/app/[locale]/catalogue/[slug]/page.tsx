@@ -3,12 +3,13 @@ import { DEFAULT_OG_IMAGE, SITE_NAME, languageAlternates, pageUrl, productJsonLd
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Droplets, Info } from "lucide-react";
+import { Banknote, ChevronRight, Package, Truck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import AvailabilityBadge from "@/components/AvailabilityBadge";
 import ProductBuy from "@/components/ProductBuy";
 import ProductCard from "@/components/ProductCard";
+import { discountPercent, formatPrice } from "@/lib/money";
 import { getOtherProducts, getProductBySlug } from "@/lib/products";
 import { loc } from "@/lib/types";
 
@@ -56,99 +57,123 @@ export default async function ProductPage({ params }: Props) {
 
   const more = await getOtherProducts(product.id, MORE_PRODUCTS_LIMIT);
   const t = await getTranslations("product");
-  const c = await getTranslations("common");
+  const n = await getTranslations("nav");
   const title = loc(product, "title", locale);
   const description = loc(product, "description", locale);
   const image = product.images?.[0];
+  const hasPrice = Number(product.price) > 0;
+  const off = discountPercent(product.price, product.compare_at_price);
 
   return (
     <>
-    <JsonLd data={productJsonLd(product, locale)} />
-    <section className="mx-auto max-w-6xl px-4 py-10">
-      <Link
-        href="/catalogue"
-        className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:underline"
-      >
-        <ArrowLeft size={16} className="rtl:rotate-180" />
-        {t("back")}
-      </Link>
-
-      <div className="grid gap-10 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-3xl border border-brand-100 bg-brand-50">
-          {image ? (
-            <Image
-              src={image}
-              alt={title}
-              fill
-              priority
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-brand-200">
-              <Droplets size={96} />
-            </div>
-          )}
-        </div>
-
-        <div>
-          <div className="mb-4 flex flex-wrap gap-2">
-            <AvailabilityBadge value={product.availability} />
-            {product.category && (
-              <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-bold text-slate-700">
+      <JsonLd data={productJsonLd(product, locale)} />
+      <section className="mx-auto max-w-7xl px-4 py-8">
+        <nav className="mb-6 flex flex-wrap items-center gap-1.5 text-sm text-zinc-500">
+          <Link href="/" className="hover:text-brand-600">{n("home")}</Link>
+          <ChevronRight size={14} className="rtl:rotate-180" />
+          <Link href="/catalogue" className="hover:text-brand-600">{n("catalogue")}</Link>
+          {product.category && (
+            <>
+              <ChevronRight size={14} className="rtl:rotate-180" />
+              <Link
+                href={{ pathname: "/catalogue", query: { category: product.category.slug } }}
+                className="hover:text-brand-600"
+              >
                 {loc(product.category, "name", locale)}
+              </Link>
+            </>
+          )}
+        </nav>
+
+        <div className="grid gap-10 md:grid-cols-2">
+          <div className="relative aspect-square overflow-hidden rounded-sm border border-zinc-200 bg-zinc-100">
+            {image ? (
+              <Image
+                src={image}
+                alt={title}
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-zinc-300">
+                <Package size={96} />
+              </div>
+            )}
+            {off > 0 && hasPrice && (
+              <span className="absolute start-3 top-3 rounded-sm bg-brand-600 px-3 py-1.5 text-sm font-extrabold text-white">
+                -{off}%
               </span>
             )}
-            <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-bold text-brand-700">
-              {c("wholesale")}
-            </span>
-            <span className="rounded-full bg-accent-100 px-2.5 py-1 text-[11px] font-bold text-accent-800">
-              {c("pieceByPiece")}
-            </span>
           </div>
 
-          <h1 className="text-3xl font-extrabold text-brand-900 sm:text-4xl">
-            {title}
-          </h1>
-
-          {description && (
-            <p className="mt-4 whitespace-pre-line leading-relaxed text-slate-600">
-              {description}
-            </p>
-          )}
-
-          <div className="my-7 flex gap-3 rounded-2xl bg-brand-50 p-4 text-sm text-brand-900">
-            <Info size={18} className="mt-0.5 shrink-0 text-brand-600" />
-            <div>
-              <p className="font-bold">{t("modes")}</p>
-              <p className="mt-0.5 text-slate-600">{t("priceNote")}</p>
+          <div>
+            <div className="mb-3 flex flex-wrap gap-2">
+              <AvailabilityBadge value={product.availability} />
+              {product.category && (
+                <span className="rounded-sm bg-zinc-100 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-zinc-700">
+                  {loc(product.category, "name", locale)}
+                </span>
+              )}
             </div>
-          </div>
 
-          <ProductBuy product={product} />
-        </div>
-      </div>
-    </section>
+            <h1 className="font-display text-4xl font-extrabold uppercase leading-tight text-zinc-900 sm:text-5xl">
+              {title}
+            </h1>
 
-    {more.length > 0 && (
-      <section className="border-t border-brand-100 bg-brand-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="mb-8 text-2xl font-extrabold text-brand-900 sm:text-3xl">
-            {t("more")}
-          </h2>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
-            {more.map((p) => (
-              <div
-                key={p.id}
-                className="w-[62%] shrink-0 snap-start md:w-auto [&>a]:h-full"
-              >
-                <ProductCard product={p} />
-              </div>
-            ))}
+            {hasPrice && (
+              <p className="mt-4 flex flex-wrap items-baseline gap-x-3">
+                <span className="font-display text-5xl font-extrabold text-brand-600">
+                  {formatPrice(product.price, locale)}
+                </span>
+                {off > 0 && product.compare_at_price && (
+                  <span className="text-lg text-zinc-400 line-through">
+                    {formatPrice(product.compare_at_price, locale)}
+                  </span>
+                )}
+              </p>
+            )}
+
+            {description && (
+              <p className="mt-5 whitespace-pre-line leading-relaxed text-zinc-600">
+                {description}
+              </p>
+            )}
+
+            <div className="my-7 border-y border-zinc-200 py-6">
+              <ProductBuy product={product} />
+            </div>
+
+            <ul className="space-y-3 text-sm text-zinc-700">
+              <li className="flex items-center gap-3">
+                <Banknote size={20} className="shrink-0 text-brand-600" />
+                {t("noteCod")}
+              </li>
+              <li className="flex items-center gap-3">
+                <Truck size={20} className="shrink-0 text-brand-600" />
+                {t("noteDelivery")}
+              </li>
+            </ul>
           </div>
         </div>
       </section>
-    )}
+
+      {more.length > 0 && (
+        <section className="border-t border-zinc-200 bg-zinc-50">
+          <div className="mx-auto max-w-7xl px-4 py-14">
+            <h2 className="mb-8 font-display text-3xl font-extrabold uppercase text-zinc-900">
+              {t("more")}
+              <span className="mt-2 block h-1 w-16 bg-brand-600" />
+            </h2>
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+              {more.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
