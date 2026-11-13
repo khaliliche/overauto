@@ -79,9 +79,9 @@ export type Order = {
   total: number;
 };
 
-/** True when the product can be bought online (has a price and is in stock). */
+/** True when the product can be added to the cart (a price of 0 means "price to be confirmed by phone"). */
 export function isPurchasable(p: Pick<Product, "price" | "availability">) {
-  return Number(p.price) > 0 && p.availability !== "out_of_stock";
+  return p.availability !== "out_of_stock";
 }
 
 /** Returns row[field_locale], falling back to French if empty. */

@@ -89,7 +89,8 @@
     "buyNow": "Buy now",
     "viewCart": "View my cart",
     "noteCod": "Pay on delivery, in cash.",
-    "noteDelivery": "Delivery across Morocco."
+    "noteDelivery": "Delivery across Morocco.",
+    "priceConfirm": "We will confirm the price by phone before delivery."
   },
   "footer": {
     "tagline": "Online store for car washing products and equipment. Delivery across Morocco.",
@@ -143,7 +144,9 @@
     "errPhone": "Invalid phone number.",
     "errAddress": "Please enter your address.",
     "errUnavailable": "A product is no longer available. Refresh the page.",
-    "errGeneric": "Something went wrong. Try again or contact us on WhatsApp."
+    "errGeneric": "Something went wrong. Try again or contact us on WhatsApp.",
+    "toConfirm": "To be confirmed",
+    "totalNote": "Products marked “to be confirmed” are not included in this total. We will call you to confirm the final price."
   },
   "about": {
     "title": "About",

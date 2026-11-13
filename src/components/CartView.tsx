@@ -45,7 +45,7 @@ export default function CartView({ settings }: { settings: Settings }) {
         if (!data) return;
         const prices: Record<string, number> = {};
         for (const p of data) {
-          if (p.is_visible && p.availability !== "out_of_stock" && Number(p.price) > 0) {
+          if (p.is_visible && p.availability !== "out_of_stock") {
             prices[p.id] = Number(p.price);
           }
         }
@@ -53,7 +53,10 @@ export default function CartView({ settings }: { settings: Settings }) {
       });
   }, [ready, items, sync]);
 
-  const shipping = items.length ? shippingFor(subtotal, settings) : 0;
+  // Products without a price are "to be confirmed" by phone.
+  const hasUnpriced = items.some((i) => i.price <= 0);
+  const allUnpriced = items.length > 0 && subtotal === 0;
+  const shipping = items.length && !allUnpriced ? shippingFor(subtotal, settings) : 0;
   const total = subtotal + shipping;
   const missing =
     settings.free_shipping_from != null && subtotal < settings.free_shipping_from
@@ -198,7 +201,7 @@ export default function CartView({ settings }: { settings: Settings }) {
                       </button>
                     </div>
                     <p className="font-display text-xl font-extrabold text-brand-600">
-                      {formatPrice(i.price * i.quantity, locale)}
+                      {i.price > 0 ? formatPrice(i.price * i.quantity, locale) : t("toConfirm")}
                     </p>
                   </div>
                 </div>
@@ -255,21 +258,32 @@ export default function CartView({ settings }: { settings: Settings }) {
             <dl className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <dt className="text-zinc-600">{t("subtotal")}</dt>
-                <dd className="font-bold">{formatPrice(subtotal, locale)}</dd>
+                <dd className="font-bold">
+                  {allUnpriced ? t("toConfirm") : formatPrice(subtotal, locale)}
+                </dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-zinc-600">{t("shipping")}</dt>
                 <dd className="font-bold">
-                  {shipping === 0 ? t("free") : formatPrice(shipping, locale)}
+                  {allUnpriced
+                    ? t("toConfirm")
+                    : shipping === 0
+                      ? t("free")
+                      : formatPrice(shipping, locale)}
                 </dd>
               </div>
               <div className="flex items-baseline justify-between border-t border-zinc-200 pt-3">
                 <dt className="font-bold text-zinc-900">{t("total")}</dt>
                 <dd className="font-display text-3xl font-extrabold text-brand-600">
-                  {formatPrice(total, locale)}
+                  {allUnpriced ? t("toConfirm") : formatPrice(total, locale)}
                 </dd>
               </div>
             </dl>
+            {hasUnpriced && (
+              <p className="mt-4 rounded-sm bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800">
+                {t("totalNote")}
+              </p>
+            )}
             {missing > 0 && (
               <p className="mt-4 rounded-sm bg-zinc-100 px-3 py-2 text-xs font-semibold text-zinc-700">
                 {t("freeFrom", { amount: formatPrice(missing, locale) })}

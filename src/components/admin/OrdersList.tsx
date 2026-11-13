@@ -149,10 +149,14 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                               {i.variant ? ` — ${i.variant}` : ""}
                             </td>
                             <td className="py-2 pr-3 text-right text-slate-500">
-                              {dh(i.price)} × {i.quantity}
+                              {i.price > 0 ? `${dh(i.price)} × ${i.quantity}` : `× ${i.quantity}`}
                             </td>
                             <td className="py-2 text-right font-semibold">
-                              {dh(i.price * i.quantity)}
+                              {i.price > 0 ? (
+                                dh(i.price * i.quantity)
+                              ) : (
+                                <span className="text-amber-600">Prix à confirmer</span>
+                              )}
                             </td>
                           </tr>
                         ))}
@@ -164,6 +168,11 @@ export default function OrdersList({ orders }: { orders: Order[] }) {
                       <p className="text-base font-bold">
                         Total à encaisser : {dh(o.total)}
                       </p>
+                      {o.items.some((i) => i.price <= 0) && (
+                        <p className="font-semibold text-amber-600">
+                          Certains produits n&apos;ont pas de prix : appelez le client pour confirmer le total final.
+                        </p>
+                      )}
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4">

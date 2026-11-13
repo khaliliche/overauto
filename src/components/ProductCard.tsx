@@ -7,8 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { buildCartItem, useCart } from "@/lib/cart";
 import { discountPercent, formatPrice } from "@/lib/money";
-import { site, whatsappUrl } from "@/lib/site";
-import { isPurchasable, loc, type Product } from "@/lib/types";
+import { loc, type Product } from "@/lib/types";
 
 export default function ProductCard({ product }: { product: Product }) {
   const locale = useLocale();
@@ -20,7 +19,6 @@ export default function ProductCard({ product }: { product: Product }) {
   const image = product.images?.[0];
   const href = `/catalogue/${product.slug}`;
   const hasVariants = (product.variants?.length ?? 0) > 0;
-  const purchasable = isPurchasable(product);
   const soldOut = product.availability === "out_of_stock";
   const off = discountPercent(product.price, product.compare_at_price);
 
@@ -50,7 +48,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         )}
         <div className="absolute start-2 top-2 flex flex-col items-start gap-1">
-          {off > 0 && purchasable && (
+          {off > 0 && (
             <span className="rounded-sm bg-brand-600 px-2 py-1 text-[11px] font-extrabold text-white">
               -{off}%
             </span>
@@ -96,21 +94,6 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className={`${btn} cursor-not-allowed bg-zinc-200 text-zinc-500`}>
             {t("availability.out_of_stock")}
           </span>
-        ) : !purchasable ? (
-          site.whatsapp ? (
-            <a
-              href={whatsappUrl(`${title}`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${btn} border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white`}
-            >
-              {t("askWhatsapp")}
-            </a>
-          ) : (
-            <Link href={href} className={`${btn} border border-zinc-900 text-zinc-900`}>
-              {t("view")}
-            </Link>
-          )
         ) : hasVariants ? (
           <Link
             href={href}

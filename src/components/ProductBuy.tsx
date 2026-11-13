@@ -6,8 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { buildCartItem, useCart } from "@/lib/cart";
 import { site, whatsappUrl } from "@/lib/site";
-import WhatsAppIcon from "./WhatsAppIcon";
-import { isPurchasable, loc, type Product, type Variant } from "@/lib/types";
+import { loc, type Product, type Variant } from "@/lib/types";
 
 export default function ProductBuy({ product }: { product: Product }) {
   const t = useTranslations("product");
@@ -30,7 +29,7 @@ export default function ProductBuy({ product }: { product: Product }) {
   const selected: Variant | null =
     variants.find((v) => v.id === variantId) ?? null;
   const soldOut = product.availability === "out_of_stock";
-  const purchasable = isPurchasable(product);
+  const hasPrice = Number(product.price) > 0;
 
   function pick(id: string) {
     setVariantId(id);
@@ -106,21 +105,6 @@ export default function ProductBuy({ product }: { product: Product }) {
         <p className="rounded-sm bg-zinc-100 px-4 py-3 text-sm font-semibold text-zinc-700">
           {t("unavailable")}
         </p>
-      ) : !purchasable ? (
-        <div className="space-y-3">
-          <p className="text-lg font-bold text-zinc-700">{t("priceOnRequest")}</p>
-          {site.whatsapp && (
-            <a
-              href={whatsappUrl(loc(product, "title", locale))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-sm bg-[#25D366] px-6 py-3.5 font-bold text-white transition-colors hover:bg-[#1fb957]"
-            >
-              <WhatsAppIcon size={18} />
-              {t("askWhatsapp")}
-            </a>
-          )}
-        </div>
       ) : (
         <>
           <div>
@@ -170,6 +154,25 @@ export default function ProductBuy({ product }: { product: Product }) {
               {t("add")}
             </button>
           </div>
+
+          {!hasPrice && (
+            <p className="text-sm text-zinc-600">
+              {t("priceConfirm")}
+              {site.whatsapp && (
+                <>
+                  {" "}
+                  <a
+                    href={whatsappUrl(loc(product, "title", locale))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-brand-600 underline"
+                  >
+                    {t("askWhatsapp")}
+                  </a>
+                </>
+              )}
+            </p>
+          )}
 
           {added && (
             <p className="flex items-center gap-3 text-sm font-bold text-emerald-700">

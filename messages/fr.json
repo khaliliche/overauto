@@ -89,7 +89,8 @@
     "buyNow": "Acheter maintenant",
     "viewCart": "Voir mon panier",
     "noteCod": "Paiement à la livraison, en espèces.",
-    "noteDelivery": "Livraison partout au Maroc."
+    "noteDelivery": "Livraison partout au Maroc.",
+    "priceConfirm": "Le prix vous sera confirmé par téléphone avant la livraison."
   },
   "footer": {
     "tagline": "Boutique en ligne de produits et matériel de lavage auto. Livraison partout au Maroc.",
@@ -143,7 +144,9 @@
     "errPhone": "Numéro de téléphone invalide.",
     "errAddress": "Veuillez entrer votre adresse.",
     "errUnavailable": "Un produit n'est plus disponible. Actualisez la page.",
-    "errGeneric": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp."
+    "errGeneric": "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.",
+    "toConfirm": "À confirmer",
+    "totalNote": "Les produits « à confirmer » ne sont pas inclus dans ce total. Nous vous appelons pour confirmer le prix final."
   },
   "about": {
     "title": "À propos",

@@ -122,6 +122,11 @@ export default async function ProductPage({ params }: Props) {
               {title}
             </h1>
 
+            {!hasPrice && (
+              <p className="mt-4 font-display text-3xl font-extrabold uppercase text-zinc-500">
+                {t("priceOnRequest")}
+              </p>
+            )}
             {hasPrice && (
               <p className="mt-4 flex flex-wrap items-baseline gap-x-3">
                 <span className="font-display text-5xl font-extrabold text-brand-600">
